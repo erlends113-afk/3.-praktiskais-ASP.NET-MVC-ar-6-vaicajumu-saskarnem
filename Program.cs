@@ -1,10 +1,15 @@
 using EfWebDatabaseApp.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Pievieno MVC kontrolierus un skatus
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 // Pievieno SQLite DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -12,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Automātiski izveido datubāzi un ielādē datus pie pirmās palaišanas
+// Automātiski izveido datubāzi un ielādē datus
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
