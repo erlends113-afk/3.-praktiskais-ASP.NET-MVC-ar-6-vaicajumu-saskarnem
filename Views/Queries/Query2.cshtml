@@ -1,0 +1,30 @@
+@model List<EfWebDatabaseApp.Models.Book>
+@{ ViewData["Title"] = "2. Vaicājums - Filtēt pēc cenas"; }
+
+<h2>2. Grāmatu atlase līdz noteiktai cenai</h2>
+<form method="get" class="row g-2 my-3">
+    <div class="col-auto">
+        <input type="number" step="0.5" name="maxPrice" class="form-control" placeholder="Maksimālā cena (€)..." value="@ViewBag.MaxPrice" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Filtrēt</button>
+        <a asp-action="Query2" class="btn btn-outline-secondary">Rādīt visas</a>
+    </div>
+</form>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+        <tr><th>Nosaukums</th><th>Kategorija</th><th>Autors</th><th>Cena</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model) {
+            <tr>
+                <td>@b.Title</td>
+                <td>@b.Category?.Title</td>
+                <td>@b.Author?.Name</td>
+                <td><strong>@b.Price.ToString("C")</strong></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary mt-3">← Atpakaļ uz izvēlni</a>

@@ -1,0 +1,21 @@
+@model List<EfWebDatabaseApp.Controllers.CategoryStatViewModel>
+@{ ViewData["Title"] = "5. Vaicājums - Kategoriju statistika"; }
+
+<h2>5. Kategoriju kopsavilkums</h2>
+<p class="text-muted">Automātisks kopsavilkums ar grāmatu skaitu un vidējo cenu katrā kategorijā</p>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Kategorija</th><th>Kopējais grāmatu skaits</th><th>Vidējā grāmatas cena</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td><strong>@item.CategoryTitle</strong></td>
+                <td>@item.BookCount gab.</td>
+                <td>@item.AveragePrice.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary mt-3">← Atpakaļ uz izvēlni</a>

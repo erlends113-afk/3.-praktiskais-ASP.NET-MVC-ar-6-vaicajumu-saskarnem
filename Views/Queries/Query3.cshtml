@@ -1,0 +1,33 @@
+@model List<EfWebDatabaseApp.Models.Author>
+@{ ViewData["Title"] = "3. Vaicājums - Autora darbi"; }
+
+<h2>3. Meklēt autoru un apskatīt tā darbus</h2>
+<form method="get" class="row g-2 my-3">
+    <div class="col-auto">
+        <input type="text" name="authorName" class="form-control" placeholder="Autora vārds..." value="@ViewBag.AuthorName" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Meklēt</button>
+        <a asp-action="Query3" class="btn btn-outline-secondary">Rādīt visus</a>
+    </div>
+</form>
+
+@foreach (var author in Model) {
+    <div class="card mb-3">
+        <div class="card-header bg-light">
+            <strong>@author.Name</strong> (@author.Email)
+        </div>
+        <div class="card-body">
+            @if (author.Books.Any()) {
+                <ul>
+                    @foreach (var b in author.Books) {
+                        <li>@b.Title - <em>@b.Price.ToString("C")</em></li>
+                    }
+                </ul>
+            } else {
+                <span class="text-muted">Nav piesaistītu grāmatu</span>
+            }
+        </div>
+    </div>
+}
+<a asp-action="Index" class="btn btn-secondary mt-3">← Atpakaļ uz izvēlni</a>

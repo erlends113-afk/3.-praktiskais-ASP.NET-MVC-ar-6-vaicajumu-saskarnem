@@ -1,0 +1,17 @@
+@model List<EfWebDatabaseApp.Controllers.AuthorRankViewModel>
+@{ ViewData["Title"] = "6. Vaicājums - Autoru rangs"; }
+
+<h2>6. Autoru rangs pēc sarakstīto grāmatu skaita</h2>
+<p class="text-muted">Automātisks saraksts sakārtots dilstošā secībā</p>
+
+<ol class="list-group list-group-numbered">
+    @foreach (var a in Model) {
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">@a.AuthorName</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@a.BookCount grāmata(-as)</span>
+        </li>
+    }
+</ol>
+<a asp-action="Index" class="btn btn-secondary mt-3">← Atpakaļ uz izvēlni</a>

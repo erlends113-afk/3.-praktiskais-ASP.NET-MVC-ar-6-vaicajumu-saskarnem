@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "LINQ Vaicājumi";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-5">Praktiskais uzdevums Nr. 3</h1>
+    <p class="lead">ASP.NET Core tīmekļa lietotne ar 6 LINQ vaicājumu saskarnēm</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-primary">
+            <div class="card-header bg-primary text-white font-weight-bold">
+                Vaicājumi ar datu ievadi no klaviatūras
+            </div>
+            <div class="list-group list-group-flush">
+                <a asp-action="Query1" class="list-group-item list-group-item-action">
+                    <strong>1. vaicājums:</strong> Meklēt grāmatas pēc nosaukuma fragmenta
+                </a>
+                <a asp-action="Query2" class="list-group-item list-group-item-action">
+                    <strong>2. vaicājums:</strong> Atlasīt grāmatas pēc maksimālās cenas
+                </a>
+                <a asp-action="Query3" class="list-group-item list-group-item-action">
+                    <strong>3. vaicājums:</strong> Meklēt autoru un skatīt tā darbus
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-success">
+            <div class="card-header bg-success text-white font-weight-bold">
+                Automātiskie vaicājumi (bez ievades)
+            </div>
+            <div class="list-group list-group-flush">
+                <a asp-action="Query4" class="list-group-item list-group-item-action">
+                    <strong>4. vaicājums:</strong> TOP 3 dārgākās grāmatas sistēmā
+                </a>
+                <a asp-action="Query5" class="list-group-item list-group-item-action">
+                    <strong>5. vaicājums:</strong> Kategoriju statistika (skaits un vidējā cena)
+                </a>
+                <a asp-action="Query6" class="list-group-item list-group-item-action">
+                    <strong>6. vaicājums:</strong> Autoru rangs pēc sarakstīto grāmatu skaita
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
